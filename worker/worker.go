@@ -59,13 +59,11 @@ loop:
 		select {
 		case t := <-w.TaskChan:
 			// This worker receives a new task to run
-			// To be implemented
 			w.ProcessPreempt(t)
 			w.FlagChan <-0 						// this will alert the scheduler that this worker is ready to be put back into its FreeWorkerBuf
 			log.Printf("worker<%d> is finished processing App<%s>/Task<%d> and sends flag\n",w.WorkerID,w.CurrentTask.AppID,w.CurrentTask.TaskID)
 		case <-w.StopChan:
 			// Receive signal to stop
-			// To be implemented
 			w.FlagChan <-0
 			break loop
 		}

@@ -25,6 +25,7 @@ type Scheduler struct {
 	TaskBuf       		*worker.TaskQueue
 }
 
+// creates new new scheduler structure
 func NewScheduler() *Scheduler{
 	return &Scheduler{
 		TaskChan:			make(chan *task.Task,constant.TASK_CHAN_SIZE),
@@ -42,7 +43,7 @@ func NewScheduler() *Scheduler{
 }
 
 
-
+// Inserts tasks into the task queue(earliest deadline first)
 func (s *Scheduler) Insert_into_TaskStack(task *task.Task) {
 	log.Printf("Insert_into_TaskStack method starts\n")
 	if len(s.TaskBuf.Queue)==0 {
@@ -192,7 +193,7 @@ func (s *Scheduler) CheckWorkerFlagChans() {
 		s.StopChan2_verify <-0
 }
 
-// Start starts the scheduler
+// Start1 and Start2 starts the scheduler
 
 func (s *Scheduler) Start1() {
 	go s.ScheduleLoop()

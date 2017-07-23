@@ -35,7 +35,6 @@ func main() {
 
 	// Create and initialize the scheduler
 	sched := scheduler.NewScheduler()
-	// To be implemented, initialization process
 
 	// Create all workers
 	sched.AllWorkerBuf.CreateWorkerPool()
